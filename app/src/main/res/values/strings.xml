@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Русское лото</string>
+    <string name="splash_title">Spalsh заголовок</string>
+    <string name="splash_kegs">Spalsh бочонки</string>
+</resources>
