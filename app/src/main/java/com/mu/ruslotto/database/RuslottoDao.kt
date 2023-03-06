@@ -8,9 +8,12 @@ interface RuslottoDao {
     @Query("SELECT * FROM table_issues")
     fun getIssues(): LiveData<List<Issue>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addIssue(issue: Issue)
+    @Insert
+    suspend fun addIssue(issue: Issue): Long
+
+    @Update
+    suspend fun editIssue(issue: Issue): Int
 
     @Delete
-    suspend fun delIssue(issue: Issue)
+    suspend fun delIssue(issue: Issue): Int
 }
