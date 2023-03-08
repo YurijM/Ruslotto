@@ -9,5 +9,10 @@
         android:id="@+id/splashFragment"
         android:name="com.mu.ruslotto.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_main_graph"
+            app:destination="@id/main_graph" />
+    </fragment>
+    <include app:graph="@navigation/main_graph" />
 </navigation>

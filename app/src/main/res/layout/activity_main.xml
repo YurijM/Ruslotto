@@ -25,5 +25,18 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <include layout="@layout/container_main" />
+
+    <LinearLayout
+        android:id="@+id/mainLayoutFooter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <include
+            android:id="@+id/mainFooter"
+            layout="@layout/footer_main" />
+
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

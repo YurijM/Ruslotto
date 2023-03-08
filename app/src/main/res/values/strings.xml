@@ -2,4 +2,7 @@
     <string name="app_name">Русское лото</string>
     <string name="splash_title">Spalsh заголовок</string>
     <string name="splash_kegs">Spalsh бочонки</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="issues">Тиражи</string>
 </resources>
