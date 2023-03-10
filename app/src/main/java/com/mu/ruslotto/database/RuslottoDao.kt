@@ -1,12 +1,12 @@
 package com.mu.ruslotto.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RuslottoDao {
     @Query("SELECT * FROM table_issues")
-    fun getIssues(): LiveData<List<Issue>>
+    fun getIssues(): Flow<List<Issue>>
 
     @Insert
     suspend fun addIssue(issue: Issue): Long
