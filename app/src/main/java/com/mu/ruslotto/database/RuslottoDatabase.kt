@@ -18,9 +18,23 @@ abstract class RuslottoDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
-        private var database: RuslottoDatabase? = null
+        private var INSTANCE: RuslottoDatabase? = null
 
-        @Synchronized
+        fun getDatabase(context: Context): RuslottoDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context,
+                    RuslottoDatabase::class.java,
+                    "app_database")
+                    //.createFromAsset("database/bus_schedule.db")
+                    .build()
+                INSTANCE = instance
+
+                instance
+            }
+        }
+
+        /*@Synchronized
         fun getInstance(context: Context): RuslottoDatabase {
             if (database == null) {
                 database = Room.databaseBuilder(
@@ -31,6 +45,6 @@ abstract class RuslottoDatabase : RoomDatabase() {
             }
 
             return database as RuslottoDatabase
-        }
+        }*/
     }
 }

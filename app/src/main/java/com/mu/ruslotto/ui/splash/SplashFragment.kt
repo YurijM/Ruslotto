@@ -20,10 +20,13 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     private val pause = 3000L
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val database: RuslottoDatabase by lazy { RuslottoDatabase.getDatabase(requireContext()) }
+
         super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launch(Dispatchers.IO) {
-            DAO = RuslottoDatabase.getInstance(requireContext()).getRuslottoDao()
+            //DAO = RuslottoDatabase.getDatabase(requireContext()).getRuslottoDao()
+            DAO = database.getRuslottoDao()
             REPOSITORY = RuslottoRepository(DAO)
 
             delay(pause)
