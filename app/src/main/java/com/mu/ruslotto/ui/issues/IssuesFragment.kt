@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.mu.ruslotto.R
 import com.mu.ruslotto.database.Issue
 import com.mu.ruslotto.databinding.FragmentIssuesBinding
@@ -12,8 +14,7 @@ import androidx.navigation.fragment.findNavController
 
 class IssuesFragment : Fragment() {
     private lateinit var binding: FragmentIssuesBinding
-
-    //private val viewModel: RatingViewModel by viewModels()
+    private val viewModel: IssuesViewModel by viewModels()
     private val adapterIssues = IssuesAdapter { issue -> onListItemClick(issue) }
 
     override fun onCreateView(
@@ -26,8 +27,15 @@ class IssuesFragment : Fragment() {
         recyclerViewRating.adapter = adapterIssues
 
         //observeGamblers()
+        loadIssues()
 
         return binding.root
+    }
+
+    private fun loadIssues() {
+        viewModel.getIssues().observe(viewLifecycleOwner, Observer {
+            adapterIssues.setIssues(it)
+        })
     }
 
     private fun onListItemClick(issue: Issue) {

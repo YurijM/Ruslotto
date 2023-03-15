@@ -1,10 +1,16 @@
 package com.mu.ruslotto.ui.issues
 
 import androidx.lifecycle.ViewModel
-import com.mu.ruslotto.database.Issue
-import com.mu.ruslotto.utils.DAO
-import kotlinx.coroutines.flow.Flow
+import androidx.lifecycle.liveData
+import com.mu.ruslotto.utils.REPOSITORY
 
 class IssuesViewModel : ViewModel() {
-    fun getIssues(): Flow<List<Issue>> = DAO.getIssues()
+    //fun getIssues(): Flow<List<Issue>> = DAO.getIssues()
+
+    fun getIssues() = liveData {
+        REPOSITORY.issues.collect {
+            emit(it)
+        }
+    }
+
 }
