@@ -25,11 +25,10 @@ abstract class RuslottoDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context,
                     RuslottoDatabase::class.java,
-                    "app_database")
+                    "db_ruslotto")
                     //.createFromAsset("database/bus_schedule.db")
                     .build()
                 INSTANCE = instance
-
                 instance
             }
         }

@@ -1,16 +1,13 @@
 package com.mu.ruslotto.ui.issues
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import com.mu.ruslotto.R
 import com.mu.ruslotto.database.Issue
 import com.mu.ruslotto.databinding.FragmentIssuesBinding
-import androidx.navigation.fragment.findNavController
 
 class IssuesFragment : Fragment() {
     private lateinit var binding: FragmentIssuesBinding
@@ -26,19 +23,27 @@ class IssuesFragment : Fragment() {
         val recyclerViewRating = binding.rvIssuesList
         recyclerViewRating.adapter = adapterIssues
 
-        //observeGamblers()
-        loadIssues()
+        observeIssues()
+        //loadIssues()
 
         return binding.root
     }
 
-    private fun loadIssues() {
+    /*private fun loadIssues() {
         viewModel.getIssues().observe(viewLifecycleOwner, Observer {
             adapterIssues.setIssues(it)
         })
+    }*/
+    private fun observeIssues() = viewModel.getIssues().observe(viewLifecycleOwner) {
+        if (it.isEmpty())
+            binding.tvIssuesDataAbsent.visibility = View.VISIBLE
+        else
+            binding.tvIssuesDataAbsent.visibility = View.GONE
+
+        adapterIssues.setIssues(it)
     }
 
     private fun onListItemClick(issue: Issue) {
-        findNavController().navigate(R.id.action_splashFragment_to_main_graph)
+        //findNavController().navigate(R.id.action_splashFragment_to_main_graph)
     }
 }

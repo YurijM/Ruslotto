@@ -11,20 +11,28 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        app:contentPaddingLeft="@dimen/padding"
+        app:contentPaddingRight="@dimen/padding"
+        app:contentPaddingTop="@dimen/padding_sm"
+        app:contentPaddingBottom="@dimen/padding_sm"
+        app:cardCornerRadius="@dimen/padding_lg"
+        app:cardElevation="@dimen/margin_xl"
+        android:backgroundTint="@color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvIssue"
+            android:id="@+id/tvItemIssue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/color_text"
-            android:textSize="@dimen/text_size_lg"
+            android:textSize="@dimen/text_size"
             tools:text="@string/issue" />
 
         <ImageView
-            android:id="@+id/ivIssueDoubleArrow"
+            android:id="@+id/ivItemIssueDoubleArrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"

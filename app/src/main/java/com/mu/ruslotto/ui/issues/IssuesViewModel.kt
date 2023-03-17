@@ -12,5 +12,4 @@ class IssuesViewModel : ViewModel() {
             emit(it)
         }
     }
-
 }

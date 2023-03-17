@@ -33,10 +33,6 @@
     <style name="Theme.Ruslotto.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="CardView">
-        <item name="android:backgroundTint">@color/background_light</item>
-        <item name="contentPadding">@dimen/padding</item>
-        <item name="cardElevation">@dimen/margin</item>
-        <item name="cardCornerRadius">@dimen/margin_sm</item>
     </style>
 
 </resources>
