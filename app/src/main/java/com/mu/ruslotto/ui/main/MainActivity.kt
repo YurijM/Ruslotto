@@ -3,6 +3,7 @@ package com.mu.ruslotto.ui.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mu.ruslotto.databinding.ActivityMainBinding
+import com.mu.ruslotto.utils.APP_ACTIVITY
 import com.mu.ruslotto.utils.YEAR_START
 import java.util.*
 
@@ -12,6 +13,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        APP_ACTIVITY = this
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

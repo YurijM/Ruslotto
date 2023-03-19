@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mu.ruslotto.R
 import com.mu.ruslotto.database.Issue
+import com.mu.ruslotto.utils.showToast
 
 class IssuesAdapter(private val onItemClicked: (Issue) -> Unit) : RecyclerView.Adapter<IssuesAdapter.IssuesHolder>() {
     private var issues = emptyList<Issue>()
@@ -45,6 +46,8 @@ class IssuesAdapter(private val onItemClicked: (Issue) -> Unit) : RecyclerView.A
     override fun getItemCount(): Int = issues.size
 
     override fun onBindViewHolder(holder: IssuesHolder, position: Int) {
+        showToast("position: $position")
+
         val issue = issues[position]
         holder.issue.text = issue.issue.toString()
 
