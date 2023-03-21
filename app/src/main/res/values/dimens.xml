@@ -16,4 +16,5 @@
 
     <dimen name="img_size_author">28dp</dimen>
     <dimen name="height_footer">36dp</dimen>
+    <dimen name="width_issue">200dp</dimen>
 </resources>
