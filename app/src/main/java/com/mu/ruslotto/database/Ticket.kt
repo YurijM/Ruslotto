@@ -7,12 +7,12 @@ import androidx.room.PrimaryKey
 
 @Entity(
     "table_tickets",
-    /*indices = [
+    indices = [
         Index(
-            value = ["ticket"],
+            value = ["issue_id", "ticket"],
             unique = true
         )
-    ],*/
+    ],
     foreignKeys = [
         ForeignKey(
             entity = Issue::class,

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 
 @Entity(
     "table_numbers",
-    /*indices = [
+    indices = [
         Index(
             value = ["ticket_id", "card", "row", "column"],
             unique = true
@@ -16,7 +16,7 @@ import androidx.room.PrimaryKey
             value = ["ticket_id", "card", "number"],
             unique = true
         )
-    ],*/
+    ],
     foreignKeys = [
         ForeignKey(
             entity = Ticket::class,

@@ -6,12 +6,12 @@ import androidx.room.PrimaryKey
 
 @Entity(
     "table_issues",
-    /*indices = [
+    indices = [
         Index(
             value = ["issue"],
             unique = true
         )
-    ]*/
+    ]
 )
 data class Issue(
     @PrimaryKey(true) var id: Int,
