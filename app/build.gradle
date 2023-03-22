@@ -4,6 +4,12 @@ plugins {
     id 'kotlin-kapt'
 }
 
+kapt {
+    arguments {
+        arg("room.schemaLocation", "$projectDir/schemas")
+    }
+}
+
 android {
     namespace 'com.mu.ruslotto'
     compileSdk 33
