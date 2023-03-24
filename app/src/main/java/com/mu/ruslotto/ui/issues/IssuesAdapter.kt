@@ -10,15 +10,26 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mu.ruslotto.R
 import com.mu.ruslotto.database.Issue
-import com.mu.ruslotto.utils.showToast
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class IssuesAdapter(private val onItemClicked: (Issue) -> Unit) : RecyclerView.Adapter<IssuesAdapter.IssuesHolder>() {
     private var issues = emptyList<Issue>()
 
-    class IssuesHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class IssuesHolder(
+        view: View,
+        private val onItemClicked: (Issue) -> Unit
+    ) : RecyclerView.ViewHolder(view), View.OnClickListener {
         val date: TextView = view.findViewById(R.id.tvItemIssueDate)
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View) {
+            val issue = v.tag as Issue
+            onItemClicked(issue)
+        }
     }
 
     /*class IssuesHolder(private var binding: ItemIssueBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -29,7 +40,7 @@ class IssuesAdapter(private val onItemClicked: (Issue) -> Unit) : RecyclerView.A
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IssuesHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_issue, parent, false)
-        return IssuesHolder(view)
+        return IssuesHolder(view, onItemClicked)
 
         /*val viewHolder = IssuesHolder(
             ItemIssueBinding.inflate(
@@ -51,9 +62,9 @@ class IssuesAdapter(private val onItemClicked: (Issue) -> Unit) : RecyclerView.A
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: IssuesHolder, position: Int) {
-        showToast("position: $position")
-
         val issue = issues[position]
+
+        holder.itemView.tag = issue
         holder.date.text = LocalDate.parse(issue.date).format(DateTimeFormatter.ofPattern("dd.MM.y"))
 
         //holder.bind(issues[position])

@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.mu.ruslotto.database.Issue
 import com.mu.ruslotto.databinding.FragmentIssuesBinding
 
 class IssuesFragment : Fragment() {
     private lateinit var binding: FragmentIssuesBinding
     private val viewModel: IssuesViewModel by viewModels()
-    private val adapterIssues = IssuesAdapter { issue -> onListItemClick(issue) }
+    private val adapterIssues = IssuesAdapter { issue -> onListIssueClick(issue) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +44,9 @@ class IssuesFragment : Fragment() {
         adapterIssues.setIssues(it)
     }
 
-    private fun onListItemClick(issue: Issue) {
-        //findNavController().navigate(R.id.action_splashFragment_to_main_graph)
+    private fun onListIssueClick(issue: Issue) {
+        //findNavController().navigate(R.id.action_issuesFragment_to_issueFragment)
+        findNavController().navigate(IssuesFragmentDirections.actionIssuesFragmentToIssueFragment(issue))
+        //AdminEmailsFragmentDirections.actionAdminEmailsFragmentToAdminEmailFragment(EmailModel())
     }
 }

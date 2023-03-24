@@ -9,5 +9,23 @@
         android:id="@+id/issuesFragment"
         android:name="com.mu.ruslotto.ui.issues.IssuesFragment"
         android:label="fragment_issues"
-        tools:layout="@layout/fragment_issues" />
+        tools:layout="@layout/fragment_issues" >
+        <action
+            android:id="@+id/action_issuesFragment_to_issueFragment"
+            app:destination="@id/issueFragment"
+            app:popUpTo="@id/issuesFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/issueFragment"
+        android:name="com.mu.ruslotto.ui.issues.IssueFragment"
+        android:label="fragment_issue"
+        tools:layout="@layout/fragment_issue">
+        <action
+            android:id="@+id/action_issueFragment_to_issuesFragment"
+            app:destination="@id/issuesFragment" />
+        <argument
+            android:name="issue"
+            app:argType="com.mu.ruslotto.database.Issue" />
+    </fragment>
 </navigation>

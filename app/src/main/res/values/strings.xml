@@ -8,4 +8,5 @@
     <string name="issue">Тираж</string>
     <string name="issues">Тиражи</string>
     <string name="issue_add">Добавить тираж</string>
+    <string name="issue_date">Дата тиража</string>
 </resources>
