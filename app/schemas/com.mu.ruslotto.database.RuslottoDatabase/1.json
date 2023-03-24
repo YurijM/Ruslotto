@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f13fc865a8f2479b79ea0326b9c3a80b",
+    "identityHash": "d154b3b719b9800668d9413b6a52f41a",
     "entities": [
       {
         "tableName": "table_issues",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `issue` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -15,9 +15,9 @@
             "notNull": true
           },
           {
-            "fieldPath": "issue",
-            "columnName": "issue",
-            "affinity": "INTEGER",
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
             "notNull": true
           }
         ],
@@ -29,13 +29,13 @@
         },
         "indices": [
           {
-            "name": "index_table_issues_issue",
+            "name": "index_table_issues_date",
             "unique": true,
             "columnNames": [
-              "issue"
+              "date"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_table_issues_issue` ON `${TABLE_NAME}` (`issue`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_table_issues_date` ON `${TABLE_NAME}` (`date`)"
           }
         ],
         "foreignKeys": []
@@ -69,7 +69,18 @@
             "id"
           ]
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_table_tickets_issue_id_ticket",
+            "unique": true,
+            "columnNames": [
+              "issue_id",
+              "ticket"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_table_tickets_issue_id_ticket` ON `${TABLE_NAME}` (`issue_id`, `ticket`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "table_issues",
@@ -131,7 +142,31 @@
             "id"
           ]
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_table_numbers_ticket_id_card_row_column",
+            "unique": true,
+            "columnNames": [
+              "ticket_id",
+              "card",
+              "row",
+              "column"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_table_numbers_ticket_id_card_row_column` ON `${TABLE_NAME}` (`ticket_id`, `card`, `row`, `column`)"
+          },
+          {
+            "name": "index_table_numbers_ticket_id_card_number",
+            "unique": true,
+            "columnNames": [
+              "ticket_id",
+              "card",
+              "number"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_table_numbers_ticket_id_card_number` ON `${TABLE_NAME}` (`ticket_id`, `card`, `number`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "table_tickets",
@@ -150,7 +185,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f13fc865a8f2479b79ea0326b9c3a80b')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd154b3b719b9800668d9413b6a52f41a')"
     ]
   }
 }

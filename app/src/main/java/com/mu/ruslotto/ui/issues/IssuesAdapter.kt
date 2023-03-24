@@ -1,20 +1,24 @@
 package com.mu.ruslotto.ui.issues
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mu.ruslotto.R
 import com.mu.ruslotto.database.Issue
 import com.mu.ruslotto.utils.showToast
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class IssuesAdapter(private val onItemClicked: (Issue) -> Unit) : RecyclerView.Adapter<IssuesAdapter.IssuesHolder>() {
     private var issues = emptyList<Issue>()
 
     class IssuesHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val issue: TextView = view.findViewById(R.id.tvItemIssue)
+        val date: TextView = view.findViewById(R.id.tvItemIssueDate)
     }
 
     /*class IssuesHolder(private var binding: ItemIssueBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -45,11 +49,12 @@ class IssuesAdapter(private val onItemClicked: (Issue) -> Unit) : RecyclerView.A
 
     override fun getItemCount(): Int = issues.size
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: IssuesHolder, position: Int) {
         showToast("position: $position")
 
         val issue = issues[position]
-        holder.issue.text = issue.issue.toString()
+        holder.date.text = LocalDate.parse(issue.date).format(DateTimeFormatter.ofPattern("dd.MM.y"))
 
         //holder.bind(issues[position])
     }

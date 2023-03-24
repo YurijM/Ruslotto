@@ -8,12 +8,12 @@ import androidx.room.PrimaryKey
     "table_issues",
     indices = [
         Index(
-            value = ["issue"],
+            value = ["date"],
             unique = true
         )
     ]
 )
 data class Issue(
     @PrimaryKey(true) var id: Int,
-    var issue: Int
+    var date: String
 )

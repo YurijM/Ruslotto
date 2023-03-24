@@ -22,7 +22,7 @@
         app:contentPaddingTop="@dimen/padding_sm">
 
         <TextView
-            android:id="@+id/tvItemIssue"
+            android:id="@+id/tvItemIssueDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/color_text"
