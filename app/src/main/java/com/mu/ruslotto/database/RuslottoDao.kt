@@ -8,6 +8,9 @@ interface RuslottoDao {
     @Query("SELECT * FROM table_issues")
     fun getIssues(): Flow<List<Issue>>
 
+    @Query("SELECT * FROM table_numbers")
+    fun getTicket(): Flow<List<Number>>
+
     @Insert
     suspend fun addIssue(issue: Issue): Long
 

@@ -1,4 +1,4 @@
-package com.mu.ruslotto.ui.issues
+package com.mu.ruslotto.ui.issues.issue
 
 import android.os.Build
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.mu.ruslotto.databinding.FragmentIssueBinding
+import com.mu.ruslotto.ui.issues.IssueFragmentArgs
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 

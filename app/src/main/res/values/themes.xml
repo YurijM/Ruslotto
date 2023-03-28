@@ -35,4 +35,14 @@
     <style name="CardView">
     </style>
 
+    <style name="TableRow" parent="@android:style/TextAppearance.Small">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginEnd">@dimen/margin_sm</item>
+        <item name="android:paddingStart">@dimen/margin_sm</item>
+        <!--<item name="android:layout_height">@dimen/_30sdp</item>-->
+    </style>
+
+
 </resources>

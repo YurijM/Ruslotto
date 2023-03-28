@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/issueFragment"
-        android:name="com.mu.ruslotto.ui.issues.IssueFragment"
+        android:name="com.mu.ruslotto.ui.issues.issue.IssueFragment"
         android:label="fragment_issue"
         tools:layout="@layout/fragment_issue">
         <action

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">-->
+
+    <TableLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tlIssue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/table_border">
+
+            <TextView
+                android:id="@+id/tvCol0"
+                style="@style/TableRow"
+                android:layout_width="0dp"
+                android:layout_column="0"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tvCol1"
+                style="@style/TableRow"
+                android:layout_width="0dp"
+                android:layout_column="1"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tvCol2"
+                style="@style/TableRow"
+                android:layout_width="0dp"
+                android:layout_column="2"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:baselineAligned="false"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tvCol3"
+                style="@style/TableRow"
+                android:layout_width="0dp"
+                android:layout_column="3"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:baselineAligned="false"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tvCol4"
+                style="@style/TableRow"
+                android:layout_width="0dp"
+                android:layout_column="4"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:baselineAligned="false"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tvCol5"
+                style="@style/TableRow"
+                android:layout_width="0dp"
+                android:layout_column="5"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:baselineAligned="false"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tvCol6"
+                style="@style/TableRow"
+                android:layout_width="0dp"
+                android:layout_column="6"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:baselineAligned="false"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tvCol7"
+                style="@style/TableRow"
+                android:layout_width="0dp"
+                android:layout_column="7"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:baselineAligned="false"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tvCol8"
+                style="@style/TableRow"
+                android:layout_width="0dp"
+                android:layout_column="8"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:baselineAligned="false"
+                android:textAlignment="center" />
+
+        </TableRow>
+
+    </TableLayout>
+
+<!--
+</LinearLayout>-->
