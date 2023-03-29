@@ -9,4 +9,6 @@
     <string name="issues">Тиражи</string>
     <string name="issue_add">Добавить тираж</string>
     <string name="issue_date">Дата тиража</string>
+
+    <string name="ticket_add">Добавить билет</string>
 </resources>

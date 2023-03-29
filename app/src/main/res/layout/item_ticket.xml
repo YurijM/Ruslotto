@@ -17,14 +17,14 @@
     <!--<include layout="@layout/grid" />-->
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvIssuesTableRow1"
+        android:id="@+id/rvIssuesCard1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_issue_table_row" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvIssuesTableRow2"
+        android:id="@+id/rvIssuesCard2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"

@@ -8,9 +8,6 @@ interface RuslottoDao {
     @Query("SELECT * FROM table_issues")
     fun getIssues(): Flow<List<Issue>>
 
-    @Query("SELECT * FROM table_numbers")
-    fun getTicket(): Flow<List<Number>>
-
     @Insert
     suspend fun addIssue(issue: Issue): Long
 
@@ -19,4 +16,16 @@ interface RuslottoDao {
 
     @Delete
     suspend fun delIssue(issue: Issue): Int
+
+    @Query("SELECT * FROM table_numbers WHERE ticket_id = :id ORDER BY card, row, column")
+    fun getTicket(id: Int): Flow<List<Number>>
+
+    @Insert
+    suspend fun addTicket(ticket: Ticket): Long
+
+    @Update
+    suspend fun editTicket(ticket: Ticket): Int
+
+    @Delete
+    suspend fun delTicket(ticket: Ticket): Int
 }

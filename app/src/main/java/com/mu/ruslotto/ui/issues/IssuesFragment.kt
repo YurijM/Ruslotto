@@ -21,6 +21,8 @@ class IssuesFragment : Fragment() {
     ): View {
         binding = FragmentIssuesBinding.inflate(layoutInflater, container, false)
 
+        binding.pbIssues.visibility = View.GONE
+
         val recyclerViewRating = binding.rvIssuesList
         recyclerViewRating.adapter = adapterIssues
 

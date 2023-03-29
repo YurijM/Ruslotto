@@ -2,7 +2,6 @@ package com.mu.ruslotto.database
 
 class RuslottoRepository(private val dao: RuslottoDao) {
     val issues = dao.getIssues()
-    val ticket = dao.getTicket()
 
     suspend fun addIssue(issue: Issue): Long {
         return dao.addIssue(issue)
