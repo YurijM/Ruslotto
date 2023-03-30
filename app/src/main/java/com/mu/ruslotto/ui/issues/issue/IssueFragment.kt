@@ -1,24 +1,20 @@
 package com.mu.ruslotto.ui.issues.issue
 
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
-import android.widget.TimePicker
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.mu.ruslotto.databinding.FragmentIssueBinding
+import com.mu.ruslotto.utils.dateToString
+import com.mu.ruslotto.utils.toRoom
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import java.util.*
 
-class IssueFragment : Fragment(),
-    DatePickerDialog.OnDateSetListener,
-    TimePickerDialog.OnTimeSetListener
-{
+class IssueFragment : Fragment() {
     private lateinit var binding: FragmentIssueBinding
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -33,32 +29,44 @@ class IssueFragment : Fragment(),
         val issue = IssueFragmentArgs.fromBundle(requireArguments()).issue
 
         val date = LocalDate.parse(issue.date)
-        binding.tvIssueDateEdit.text = date.format(DateTimeFormatter.ofPattern("dd.MM.y"))
+        //binding.tvIssueDateEdit.text = date.format(DateTimeFormatter.ofPattern("dd.MM.y"))
 
-        initDatePicker(date)
+        val calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Moscow"))
+        calendar.set(date.year, date.monthValue - 1, date.dayOfMonth)
+
+        initViewIssueDate(calendar)
+
+        initDatePicker(calendar)
 
         return binding.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun initDatePicker(date: LocalDate?) {
-        binding.ibIssueDateEdit.setOnClickListener {
-            val day = date?.dayOfMonth ?: 2023
-            val month = date?.monthValue ?: 1
-            val year = date?.year ?: 1
+    private fun initViewIssueDate(calendar: Calendar) {
+        binding.tvIssueDateEdit.text = calendar.dateToString()
+        binding.tvIssueDateEdit.tag = calendar.toRoom()
+    }
 
-            val datePickerDialog = DatePickerDialog(requireContext(), null, year, month, day)
+    private fun initDatePicker(calendar: Calendar) {
+        // create an OnDateSetListener
+        val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, monthOfYear)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-            datePickerDialog.show()
+            initViewIssueDate(calendar)
         }
-    }
-
-    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        val start = "$dayOfMonth.${month + 1}.$year"
-        binding.tvIssueDateEdit.text = start
-    }
 
 
-    override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
+        // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
+        binding.ibIssueDateEdit.setOnClickListener {
+            DatePickerDialog(
+                requireContext(),
+                dateSetListener,
+                // set DatePickerDialog to point to today's date when it loads up
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
     }
 }
