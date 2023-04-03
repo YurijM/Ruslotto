@@ -6,7 +6,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
-    "table_numbers",
+    "table_kegs",
     indices = [
         Index(
             value = ["ticket_id", "card", "row", "column"],
@@ -26,7 +26,7 @@ import androidx.room.PrimaryKey
         )
     ]
 )
-data class Number(
+data class Keg(
     @PrimaryKey(true) var id: Int,
     var card: Int,
     var row: Int,

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d154b3b719b9800668d9413b6a52f41a",
+    "identityHash": "8919001a23e5a42b095133511e98bfc7",
     "entities": [
       {
         "tableName": "table_issues",
@@ -96,7 +96,7 @@
         ]
       },
       {
-        "tableName": "table_numbers",
+        "tableName": "table_kegs",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `card` INTEGER NOT NULL, `row` INTEGER NOT NULL, `column` INTEGER NOT NULL, `number` INTEGER NOT NULL, `ticket_id` INTEGER NOT NULL, FOREIGN KEY(`ticket_id`) REFERENCES `table_tickets`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
@@ -144,7 +144,7 @@
         },
         "indices": [
           {
-            "name": "index_table_numbers_ticket_id_card_row_column",
+            "name": "index_table_kegs_ticket_id_card_row_column",
             "unique": true,
             "columnNames": [
               "ticket_id",
@@ -153,10 +153,10 @@
               "column"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_table_numbers_ticket_id_card_row_column` ON `${TABLE_NAME}` (`ticket_id`, `card`, `row`, `column`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_table_kegs_ticket_id_card_row_column` ON `${TABLE_NAME}` (`ticket_id`, `card`, `row`, `column`)"
           },
           {
-            "name": "index_table_numbers_ticket_id_card_number",
+            "name": "index_table_kegs_ticket_id_card_number",
             "unique": true,
             "columnNames": [
               "ticket_id",
@@ -164,7 +164,7 @@
               "number"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_table_numbers_ticket_id_card_number` ON `${TABLE_NAME}` (`ticket_id`, `card`, `number`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_table_kegs_ticket_id_card_number` ON `${TABLE_NAME}` (`ticket_id`, `card`, `number`)"
           }
         ],
         "foreignKeys": [
@@ -185,7 +185,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd154b3b719b9800668d9413b6a52f41a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8919001a23e5a42b095133511e98bfc7')"
     ]
   }
 }

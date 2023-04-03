@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
     entities = [
         Issue::class,
         Ticket::class,
-        Number::class
+        Keg::class
     ],
     version = 1,
     /*autoMigrations = [
@@ -30,8 +30,6 @@ abstract class RuslottoDatabase : RoomDatabase() {
                     context,
                     RuslottoDatabase::class.java,
                     "db_ruslotto")
-                    //.createFromAsset("database/bus_schedule.db")
-                    //.addMigrations((MIGRATION_1_2))
                     .build()
                 INSTANCE = instance
                 instance

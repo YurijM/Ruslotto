@@ -17,8 +17,8 @@ interface RuslottoDao {
     @Delete
     suspend fun delIssue(issue: Issue): Int
 
-    @Query("SELECT * FROM table_numbers WHERE ticket_id = :id ORDER BY card, row, column")
-    fun getTicket(id: Int): Flow<List<Number>>
+    @Query("SELECT * FROM table_kegs WHERE ticket_id = :id ORDER BY card, row, column")
+    fun getTicket(id: Int): Flow<List<Keg>>
 
     @Insert
     suspend fun addTicket(ticket: Ticket): Long

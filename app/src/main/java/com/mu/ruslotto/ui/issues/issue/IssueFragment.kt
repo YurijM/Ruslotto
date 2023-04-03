@@ -28,17 +28,24 @@ class IssueFragment : Fragment() {
 
         val issue = IssueFragmentArgs.fromBundle(requireArguments()).issue
 
-        val date = LocalDate.parse(issue.date)
-        //binding.tvIssueDateEdit.text = date.format(DateTimeFormatter.ofPattern("dd.MM.y"))
-
-        val calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Moscow"))
-        calendar.set(date.year, date.monthValue - 1, date.dayOfMonth)
-
+        val calendar = initDate(issue.date)
         initViewIssueDate(calendar)
-
         initDatePicker(calendar)
 
         return binding.root
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun initDate(date: String): Calendar {
+        val localDate = if (date.isNotEmpty())
+            LocalDate.parse(date)
+        else
+            LocalDate.now(TimeZone.getTimeZone("Europe/Moscow").toZoneId())
+
+        val calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Moscow"))
+        calendar.set(localDate.year, localDate.monthValue - 1, localDate.dayOfMonth)
+
+        return calendar
     }
 
     private fun initViewIssueDate(calendar: Calendar) {
@@ -55,7 +62,6 @@ class IssueFragment : Fragment() {
 
             initViewIssueDate(calendar)
         }
-
 
         // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
         binding.ibIssueDateEdit.setOnClickListener {
