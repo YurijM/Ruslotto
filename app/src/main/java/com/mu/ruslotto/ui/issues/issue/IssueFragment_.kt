@@ -8,17 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import com.mu.ruslotto.database.viewModelsFactory
 import com.mu.ruslotto.databinding.FragmentIssueBinding
 import com.mu.ruslotto.utils.dateToString
 import com.mu.ruslotto.utils.toRoom
 import java.time.LocalDate
 import java.util.*
 
-
-class IssueFragment : Fragment() {
+class IssueFragment_ : Fragment() {
     private lateinit var binding: FragmentIssueBinding
-    private val viewModel: IssueViewModel by viewModels()
+    private val viewModel by viewModelsFactory { IssueViewModel_(IssueFragmentArgs.fromBundle(requireArguments()).issue.id) }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -34,8 +33,6 @@ class IssueFragment : Fragment() {
         val calendar = initDate(issue.date)
         initViewIssueDate(calendar)
         initDatePicker(calendar)
-
-        observeTickets(issue.id)
 
         return binding.root
     }
@@ -79,14 +76,5 @@ class IssueFragment : Fragment() {
                 calendar.get(Calendar.DAY_OF_MONTH)
             ).show()
         }
-    }
-
-    private fun observeTickets(issueId: Int) = viewModel.getTickets(issueId).observe(viewLifecycleOwner) {
-        /*if (it.isEmpty())
-            binding.tvIssuesDataAbsent.visibility = View.VISIBLE
-        else
-            binding.tvIssuesDataAbsent.visibility = View.GONE
-
-        adapterIssues.setIssues(it)*/
     }
 }

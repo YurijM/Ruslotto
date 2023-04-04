@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "8919001a23e5a42b095133511e98bfc7",
+    "identityHash": "7825045e32ebf5fe684a76cbd1e5a51c",
     "entities": [
       {
         "tableName": "table_issues",
@@ -97,7 +97,7 @@
       },
       {
         "tableName": "table_kegs",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `card` INTEGER NOT NULL, `row` INTEGER NOT NULL, `column` INTEGER NOT NULL, `number` INTEGER NOT NULL, `ticket_id` INTEGER NOT NULL, FOREIGN KEY(`ticket_id`) REFERENCES `table_tickets`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `card` INTEGER NOT NULL, `row` INTEGER NOT NULL, `column` INTEGER NOT NULL, `number` INTEGER NOT NULL, `did_keg_win` INTEGER NOT NULL, `ticket_id` INTEGER NOT NULL, FOREIGN KEY(`ticket_id`) REFERENCES `table_tickets`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -126,6 +126,12 @@
           {
             "fieldPath": "number",
             "columnName": "number",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "did_keg_win",
+            "columnName": "did_keg_win",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -185,7 +191,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8919001a23e5a42b095133511e98bfc7')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7825045e32ebf5fe684a76cbd1e5a51c')"
     ]
   }
 }

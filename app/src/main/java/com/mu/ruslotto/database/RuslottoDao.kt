@@ -1,6 +1,7 @@
 package com.mu.ruslotto.database
 
 import androidx.room.*
+import com.mu.ruslotto.models.TicketModel
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -8,24 +9,21 @@ interface RuslottoDao {
     @Query("SELECT * FROM table_issues")
     fun getIssues(): Flow<List<Issue>>
 
-    @Insert
+    /*@Insert
     suspend fun addIssue(issue: Issue): Long
 
     @Update
     suspend fun editIssue(issue: Issue): Int
 
     @Delete
-    suspend fun delIssue(issue: Issue): Int
+    suspend fun delIssue(issue: Issue): Int*/
 
-    @Query("SELECT * FROM table_kegs WHERE ticket_id = :id ORDER BY card, row, column")
-    fun getTicket(id: Int): Flow<List<Keg>>
-
-    @Insert
-    suspend fun addTicket(ticket: Ticket): Long
-
-    @Update
-    suspend fun editTicket(ticket: Ticket): Int
-
-    @Delete
-    suspend fun delTicket(ticket: Ticket): Int
+    @Query("SELECT t.ticket, " +
+            "k.card, k.row, k.column, k.number, k.did_keg_win " +
+            "FROM table_issues i " +
+            "INNER JOIN table_tickets t ON t.issue_id = i.id " +
+            "INNER JOIN table_kegs k ON k.ticket_id = t.id " +
+            "WHERE i.id = :issueId " +
+            "ORDER BY t.ticket, k.card, k.row, k.column")
+    fun getTickets(issueId: Int): Flow<List<TicketModel>>
 }

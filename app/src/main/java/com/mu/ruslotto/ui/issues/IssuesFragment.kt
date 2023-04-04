@@ -8,15 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mu.ruslotto.database.Issue
-import com.mu.ruslotto.database.Keg
 import com.mu.ruslotto.databinding.FragmentIssuesBinding
 
 class IssuesFragment : Fragment() {
     private lateinit var binding: FragmentIssuesBinding
     private val viewModel: IssuesViewModel by viewModels()
     private val adapterIssues = IssuesAdapter { issue -> onListIssueClick(issue) }
-    private var card1 = emptyList<Keg>()
-    private var card2 = emptyList<Keg>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

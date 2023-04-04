@@ -32,5 +32,6 @@ data class Keg(
     var row: Int,
     var column: Int,
     var number: Int,
+    var did_keg_win: Boolean = false,
     var ticket_id: Int
 )

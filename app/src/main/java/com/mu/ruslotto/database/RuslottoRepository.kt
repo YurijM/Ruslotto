@@ -3,7 +3,7 @@ package com.mu.ruslotto.database
 class RuslottoRepository(private val dao: RuslottoDao) {
     val issues = dao.getIssues()
 
-    suspend fun addIssue(issue: Issue): Long {
+    /*suspend fun addIssue(issue: Issue): Long {
         return dao.addIssue(issue)
     }
 
@@ -13,5 +13,5 @@ class RuslottoRepository(private val dao: RuslottoDao) {
 
     suspend fun delIssue(issue: Issue): Int {
         return dao.delIssue(issue)
-    }
+    }*/
 }
