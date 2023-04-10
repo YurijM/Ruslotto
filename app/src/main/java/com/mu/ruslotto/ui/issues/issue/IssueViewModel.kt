@@ -5,8 +5,14 @@ import androidx.lifecycle.liveData
 import com.mu.ruslotto.utils.DAO
 
 class IssueViewModel: ViewModel() {
-    fun getTickets(idIssue: Int) = liveData {
-        DAO.getTickets(idIssue).collect {
+    fun getTickets(issueId: Int) = liveData {
+        DAO.getTickets(issueId).collect {
+            emit(it)
+        }
+    }
+
+    fun getTicket(issueId: Int, ticketId: Int) = liveData {
+        DAO.getTicket(issueId, ticketId).collect {
             emit(it)
         }
     }

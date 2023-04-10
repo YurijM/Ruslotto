@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableLayout
+        android:id="@+id/tlTicketCard1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin"
+        android:background="@drawable/table_border">
+
+        <TableRow
+            android:id="@+id/trTicketCard1Row0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row0Col0"
+                style="@style/TableRow"
+                android:layout_column="0" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row0Col1"
+                style="@style/TableRow"
+                android:layout_column="1" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row0Col2"
+                style="@style/TableRow"
+                android:layout_column="2" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row0Col3"
+                style="@style/TableRow"
+                android:layout_column="3" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row0Col4"
+                style="@style/TableRow"
+                android:layout_column="4" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row0Col5"
+                style="@style/TableRow"
+                android:layout_column="5" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row0Col6"
+                style="@style/TableRow"
+                android:layout_column="6" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row0Col7"
+                style="@style/TableRow"
+                android:layout_column="7" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row0Col8"
+                style="@style/TableRow"
+                android:layout_column="8" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trTicketCard1Row1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row1Col0"
+                style="@style/TableRow"
+                android:layout_column="0" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row1Col1"
+                style="@style/TableRow"
+                android:layout_column="1" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row1Col2"
+                style="@style/TableRow"
+                android:layout_column="2" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row1Col3"
+                style="@style/TableRow"
+                android:layout_column="3" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row1Col4"
+                style="@style/TableRow"
+                android:layout_column="4" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row1Col5"
+                style="@style/TableRow"
+                android:layout_column="5" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row1Col6"
+                style="@style/TableRow"
+                android:layout_column="6" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row1Col7"
+                style="@style/TableRow"
+                android:layout_column="7" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row1Col8"
+                style="@style/TableRow"
+                android:layout_column="8" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trTicketCard1Row2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row2Col0"
+                style="@style/TableRow"
+                android:layout_column="0" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row2Col1"
+                style="@style/TableRow"
+                android:layout_column="1" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row2Col2"
+                style="@style/TableRow"
+                android:layout_column="2" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row2Col3"
+                style="@style/TableRow"
+                android:layout_column="3" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row2Col4"
+                style="@style/TableRow"
+                android:layout_column="4" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row2Col5"
+                style="@style/TableRow"
+                android:layout_column="5" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row2Col6"
+                style="@style/TableRow"
+                android:layout_column="6" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row2Col7"
+                style="@style/TableRow"
+                android:layout_column="7" />
+
+            <TextView
+                android:id="@+id/tvTicketCard1Row2Col8"
+                style="@style/TableRow"
+                android:layout_column="8" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/tlTicketCard2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/table_border">
+
+        <TableRow
+            android:id="@+id/trTicketCard2Row0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row0Col0"
+                style="@style/TableRow"
+                android:layout_column="0" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row0Col1"
+                style="@style/TableRow"
+                android:layout_column="1" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row0Col2"
+                style="@style/TableRow"
+                android:layout_column="2" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row0Col3"
+                style="@style/TableRow"
+                android:layout_column="3" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row0Col4"
+                style="@style/TableRow"
+                android:layout_column="4" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row0Col5"
+                style="@style/TableRow"
+                android:layout_column="5" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row0Col6"
+                style="@style/TableRow"
+                android:layout_column="6" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row0Col7"
+                style="@style/TableRow"
+                android:layout_column="7" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row0Col8"
+                style="@style/TableRow"
+                android:layout_column="8" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trTicketCard2Row1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row1Col0"
+                style="@style/TableRow"
+                android:layout_column="0" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row1Col1"
+                style="@style/TableRow"
+                android:layout_column="1" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row1Col2"
+                style="@style/TableRow"
+                android:layout_column="2" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row1Col3"
+                style="@style/TableRow"
+                android:layout_column="3" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row1Col4"
+                style="@style/TableRow"
+                android:layout_column="4" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row1Col5"
+                style="@style/TableRow"
+                android:layout_column="5" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row1Col6"
+                style="@style/TableRow"
+                android:layout_column="6" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row1Col7"
+                style="@style/TableRow"
+                android:layout_column="7" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row1Col8"
+                style="@style/TableRow"
+                android:layout_column="8" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trTicketCard2Row2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row2Col0"
+                style="@style/TableRow"
+                android:layout_column="0" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row2Col1"
+                style="@style/TableRow"
+                android:layout_column="1" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row2Col2"
+                style="@style/TableRow"
+                android:layout_column="2" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row2Col3"
+                style="@style/TableRow"
+                android:layout_column="3" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row2Col4"
+                style="@style/TableRow"
+                android:layout_column="4" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row2Col5"
+                style="@style/TableRow"
+                android:layout_column="5" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row2Col6"
+                style="@style/TableRow"
+                android:layout_column="6" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row2Col7"
+                style="@style/TableRow"
+                android:layout_column="7" />
+
+            <TextView
+                android:id="@+id/tvTicketCard2Row2Col8"
+                style="@style/TableRow"
+                android:layout_column="8" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

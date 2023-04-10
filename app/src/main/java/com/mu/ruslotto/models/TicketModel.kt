@@ -3,7 +3,7 @@ package com.mu.ruslotto.models
 import java.io.Serializable
 
 data class TicketModel(
-    val ticket: String,
+    val id: Int,
     val card: Int,
     val row: Int,
     val column: Int,

@@ -42,6 +42,9 @@
         <item name="android:background">@color/white</item>
         <item name="android:layout_marginEnd">@dimen/margin_sm</item>
         <item name="android:paddingStart">@dimen/margin_sm</item>
+        <item name="android:layout_margin">1dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAlignment">center</item>
         <!--<item name="android:layout_height">@dimen/_30sdp</item>-->
     </style>
 

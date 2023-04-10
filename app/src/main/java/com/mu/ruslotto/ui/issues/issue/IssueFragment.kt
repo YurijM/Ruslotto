@@ -31,6 +31,12 @@ class IssueFragment : Fragment() {
 
         val issue = IssueFragmentArgs.fromBundle(requireArguments()).issue
 
+        //int resourceId = this.getResources().getIdentifier("nameOfResource", "id", this.getPackageName())
+
+        /*val resourceId = resources.getIdentifier("tvIssueDate", "id", APP_ACTIVITY.packageName)
+        val tv = binding.root.findViewById<TextView>(resourceId)
+        tv.text = "qwerty"*/
+
         val calendar = initDate(issue.date)
         initViewIssueDate(calendar)
         initDatePicker(calendar)
