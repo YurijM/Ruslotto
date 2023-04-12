@@ -1,28 +1,37 @@
 package com.mu.ruslotto.ui.issues.issue
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TableRow
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mu.ruslotto.R
-import com.mu.ruslotto.models.TicketModel
+import com.mu.ruslotto.database.Ticket
+import com.mu.ruslotto.utils.toLog
 
-class TicketAdapter() : RecyclerView.Adapter<TicketAdapter.TicketHolder>() {
-    private var ticket = emptyList<TicketModel>()
+class TicketAdapter : RecyclerView.Adapter<TicketAdapter.TicketHolder>() {
+    private var tickets = emptyList<Ticket>()
 
     class TicketHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val card1Row0: TableRow = view.findViewById(R.id.trTicketCard1Row0)
+        val ticket: TextView = view.findViewById(R.id.etTicketNumber)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cards, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_ticket, parent, false)
         return TicketHolder(view)
     }
 
-    override fun getItemCount(): Int = 1
+    override fun getItemCount(): Int = tickets.size
 
     override fun onBindViewHolder(holder: TicketHolder, position: Int) {
+        holder.ticket.text = tickets[position].ticket
+    }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun setTickets(tickets: List<Ticket>) {
+        this.tickets = tickets
+        toLog("tickets: ${this.tickets}")
+        notifyDataSetChanged()
     }
 }

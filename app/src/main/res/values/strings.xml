@@ -11,4 +11,5 @@
     <string name="issue_date">Дата тиража</string>
 
     <string name="ticket_add">Добавить билет</string>
+    <string name="ticket_number">Номер билета</string>
 </resources>

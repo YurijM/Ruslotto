@@ -45,8 +45,6 @@
 
         </LinearLayout>
 
-        <!--<include layout="@layout/item_ticket" />-->
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvIssueTicket"
             android:layout_width="match_parent"

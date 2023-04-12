@@ -16,25 +16,24 @@
             android:id="@+id/tvTicketNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Номер билета" />
+            android:labelFor="@id/etTicketNumber"
+            android:text="@string/ticket_number" />
 
         <EditText
             android:id="@+id/etTicketNumber"
-            android:layout_width="120dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
-            android:ems="10"
+            android:ems="6"
             android:inputType="number"
-            android:textSize="@dimen/text_size"
-            tools:text="0123456789" />
+            tools:text="0123456789"
+            android:autofillHints="false" />
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTicketCards"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_cards" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
