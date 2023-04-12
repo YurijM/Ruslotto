@@ -10,21 +10,21 @@ import com.mu.ruslotto.R
 import com.mu.ruslotto.database.Ticket
 import com.mu.ruslotto.utils.toLog
 
-class TicketAdapter : RecyclerView.Adapter<TicketAdapter.TicketHolder>() {
+class IssueAdapter : RecyclerView.Adapter<IssueAdapter.IssueHolder>() {
     private var tickets = emptyList<Ticket>()
 
-    class TicketHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class IssueHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ticket: TextView = view.findViewById(R.id.etTicketNumber)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IssueHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_ticket, parent, false)
-        return TicketHolder(view)
+        return IssueHolder(view)
     }
 
     override fun getItemCount(): Int = tickets.size
 
-    override fun onBindViewHolder(holder: TicketHolder, position: Int) {
+    override fun onBindViewHolder(holder: IssueHolder, position: Int) {
         holder.ticket.text = tickets[position].ticket
     }
 

@@ -19,7 +19,7 @@ import java.util.*
 class IssueFragment : Fragment() {
     private lateinit var binding: FragmentIssueBinding
     private val viewModel: IssueViewModel by viewModels()
-    private val adapterTicket = TicketAdapter()
+    private val adapterIssue = IssueAdapter()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -43,7 +43,7 @@ class IssueFragment : Fragment() {
         initDatePicker(calendar)
 
         val recyclerViewRating = binding.rvIssueTicket
-        recyclerViewRating.adapter = adapterTicket
+        recyclerViewRating.adapter = adapterIssue
 
         observeTickets(issue.id)
 
@@ -97,6 +97,6 @@ class IssueFragment : Fragment() {
         else
             binding.tvIssuesDataAbsent.visibility = View.GONE*/
 
-        adapterTicket.setTickets(it)
+        adapterIssue.setTickets(it)
     }
 }
