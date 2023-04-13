@@ -27,16 +27,35 @@
 
     <include layout="@layout/container_main" />
 
+
+    <LinearLayout
+        android:id="@+id/mainProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ProgressBar
+            android:id="@+id/pbMain"
+            style="@style/ProgressBar"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/mainLayoutFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            style="@style/FloatingActionButton"
+            android:contentDescription="@string/app_name" />
 
         <include
             android:id="@+id/mainFooter"
             layout="@layout/footer_main" />
-
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

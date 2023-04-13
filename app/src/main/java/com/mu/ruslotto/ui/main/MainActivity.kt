@@ -1,6 +1,7 @@
 package com.mu.ruslotto.ui.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.mu.ruslotto.databinding.ActivityMainBinding
 import com.mu.ruslotto.utils.APP_ACTIVITY
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+
+        binding.pbMain.visibility = View.GONE
 
         setCopyright()
     }

@@ -33,7 +33,7 @@ class IssueFragment : Fragment() {
     ): View {
         binding = FragmentIssueBinding.inflate(layoutInflater, container, false)
 
-        binding.pbIssue.visibility = View.GONE
+        //binding.pbIssue.visibility = View.GONE
 
         val issue = IssueFragmentArgs.fromBundle(requireArguments()).issue
 

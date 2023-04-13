@@ -13,6 +13,7 @@
     <dimen name="padding">8dp</dimen>
     <dimen name="padding_lg">12dp</dimen>
     <dimen name="padding_xl">20dp</dimen>
+    <dimen name="padding_scroll">40dp</dimen>
 
     <dimen name="img_size_author">28dp</dimen>
     <dimen name="height_footer">36dp</dimen>

@@ -21,7 +21,7 @@ class IssuesFragment : Fragment() {
     ): View {
         binding = FragmentIssuesBinding.inflate(layoutInflater, container, false)
 
-        binding.pbIssues.visibility = View.GONE
+        //binding.pbIssues.visibility = View.GONE
 
         /*binding.fabIssuesAdd.setOnClickListener {
             findNavController().navigate(IssuesFragmentDirections.actionIssuesFragmentToIssueFragment(Issue(0, "")))
