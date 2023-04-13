@@ -23,9 +23,9 @@ class IssuesFragment : Fragment() {
 
         binding.pbIssues.visibility = View.GONE
 
-        binding.fabIssuesAdd.setOnClickListener {
+        /*binding.fabIssuesAdd.setOnClickListener {
             findNavController().navigate(IssuesFragmentDirections.actionIssuesFragmentToIssueFragment(Issue(0, "")))
-        }
+        }*/
 
         val recyclerViewRating = binding.rvIssuesList
         recyclerViewRating.adapter = adapterIssues

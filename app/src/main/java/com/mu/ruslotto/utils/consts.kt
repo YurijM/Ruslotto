@@ -12,3 +12,6 @@ const val YEAR_START = 2023
 
 lateinit var DAO: RuslottoDao
 lateinit var REPOSITORY: RuslottoRepository
+
+const val ROWS_COUNT = 3
+const val COLS_COUNT = 9

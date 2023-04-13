@@ -11,8 +11,8 @@ class IssueViewModel: ViewModel() {
         }
     }
 
-    fun getTicket(issueId: Int, ticketId: Int) = liveData {
-        DAO.getTicket(issueId, ticketId).collect {
+    fun getIssueKegs(issueId: Int) = liveData {
+        DAO.getIssueKegs(issueId).collect {
             emit(it)
         }
     }

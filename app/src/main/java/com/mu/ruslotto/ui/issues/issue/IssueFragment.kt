@@ -9,7 +9,11 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.mu.ruslotto.database.Keg
+import com.mu.ruslotto.database.Ticket
 import com.mu.ruslotto.databinding.FragmentIssueBinding
+import com.mu.ruslotto.utils.COLS_COUNT
+import com.mu.ruslotto.utils.ROWS_COUNT
 import com.mu.ruslotto.utils.dateToString
 import com.mu.ruslotto.utils.toRoom
 import java.time.LocalDate
@@ -20,6 +24,7 @@ class IssueFragment : Fragment() {
     private lateinit var binding: FragmentIssueBinding
     private val viewModel: IssueViewModel by viewModels()
     private val adapterIssue = IssueAdapter()
+    private lateinit var tickets: List<Ticket>
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -42,10 +47,11 @@ class IssueFragment : Fragment() {
         initViewIssueDate(calendar)
         initDatePicker(calendar)
 
-        val recyclerViewRating = binding.rvIssueTicket
-        recyclerViewRating.adapter = adapterIssue
+        val recyclerViewTickets = binding.rvIssueTicketsList
+        recyclerViewTickets.adapter = adapterIssue
 
         observeTickets(issue.id)
+        //observeIssueKegs(issue.id)
 
         return binding.root
     }
@@ -97,6 +103,33 @@ class IssueFragment : Fragment() {
         else
             binding.tvIssuesDataAbsent.visibility = View.GONE*/
 
+        tickets = it
         adapterIssue.setTickets(it)
+
+        observeIssueKegs(issueId)
+    }
+
+    private fun observeIssueKegs(issueId: Int) = viewModel.getIssueKegs(issueId).observe(viewLifecycleOwner) { kegs ->
+        val issueKegs = mutableListOf<Keg>()
+
+        tickets.forEach { ticket ->
+            (1..2).forEach { card ->
+                (0 until ROWS_COUNT).forEach { row ->
+                    (0 until COLS_COUNT).forEach { col ->
+                        val ticketKegs = kegs.filter { it.ticket_id == ticket.id && it.card == card }
+
+                        val keg = ticketKegs.find { keg -> keg.card == card && keg.row == row && keg.column == col }
+
+                        if (keg != null) {
+                            issueKegs.add(keg)
+                        } else {
+                            issueKegs.add(Keg(0, card, row, col, 0, false, ticket.id))
+                        }
+                    }
+                }
+            }
+        }
+
+        adapterIssue.setKegs(issueKegs)
     }
 }
