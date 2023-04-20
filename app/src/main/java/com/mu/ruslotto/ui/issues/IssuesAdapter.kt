@@ -75,5 +75,4 @@ class IssuesAdapter(private val onItemClicked: (Issue) -> Unit) : RecyclerView.A
         this.issues = issues
         notifyDataSetChanged()
     }
-
 }
