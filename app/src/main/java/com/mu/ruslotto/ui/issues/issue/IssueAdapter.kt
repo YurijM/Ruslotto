@@ -11,7 +11,7 @@ import com.mu.ruslotto.R
 import com.mu.ruslotto.database.Keg
 import com.mu.ruslotto.database.Ticket
 import com.mu.ruslotto.utils.COLS_COUNT
-import com.mu.ruslotto.utils.showToast
+import com.mu.ruslotto.utils.showCell
 import com.mu.ruslotto.utils.toLog
 
 class IssueAdapter : RecyclerView.Adapter<IssueAdapter.IssueHolder>() {
@@ -38,12 +38,13 @@ class IssueAdapter : RecyclerView.Adapter<IssueAdapter.IssueHolder>() {
         holder.cells.layoutManager = cellLayoutManager
         holder.cells.adapter = TicketAdapter(
             kegs.filter { keg -> keg.ticket_id == tickets[position].id }
-        ) { keg -> onListIssueClick(keg) }
+        ) { keg -> onCellClick(keg) }
     }
 
-    private fun onListIssueClick(keg: Keg) {
+    private fun onCellClick(keg: Keg) {
         //val message = keg.number.toString() ?: "empty"
-        showToast("keg: ${keg.row}, ${keg.column}")
+        //showToast("keg: ${keg.row}, ${keg.column}")
+        showCell(keg)
     }
 
     @SuppressLint("NotifyDataSetChanged")
