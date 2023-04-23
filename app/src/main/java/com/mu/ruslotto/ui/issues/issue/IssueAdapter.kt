@@ -20,7 +20,8 @@ class IssueAdapter : RecyclerView.Adapter<IssueAdapter.IssueHolder>() {
 
     class IssueHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ticket: TextView = view.findViewById(R.id.etItemTicketNumber)
-        val cells: RecyclerView = view.findViewById(R.id.rvItemTicketCardsList)
+        val card1: RecyclerView = view.findViewById(R.id.rvItemTicketCard1)
+        val card2: RecyclerView = view.findViewById(R.id.rvItemTicketCard2)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IssueHolder {
@@ -33,17 +34,18 @@ class IssueAdapter : RecyclerView.Adapter<IssueAdapter.IssueHolder>() {
     override fun onBindViewHolder(holder: IssueHolder, position: Int) {
         holder.ticket.text = tickets[position].ticket
 
-        val cellLayoutManager = GridLayoutManager(holder.cells.context, COLS_COUNT)
+        holder.card1.layoutManager = GridLayoutManager(holder.card1.context, COLS_COUNT)
+        holder.card1.adapter = TicketAdapter(
+            kegs.filter { keg -> keg.ticket_id == tickets[position].id && keg.card == 1 }
+        ) { keg -> onCellClick(keg) }
 
-        holder.cells.layoutManager = cellLayoutManager
-        holder.cells.adapter = TicketAdapter(
-            kegs.filter { keg -> keg.ticket_id == tickets[position].id }
+        holder.card2.layoutManager = GridLayoutManager(holder.card2.context, COLS_COUNT)
+        holder.card2.adapter = TicketAdapter(
+            kegs.filter { keg -> keg.ticket_id == tickets[position].id && keg.card == 2 }
         ) { keg -> onCellClick(keg) }
     }
 
     private fun onCellClick(keg: Keg) {
-        //val message = keg.number.toString() ?: "empty"
-        //showToast("keg: ${keg.row}, ${keg.column}")
         showCell(keg)
     }
 
