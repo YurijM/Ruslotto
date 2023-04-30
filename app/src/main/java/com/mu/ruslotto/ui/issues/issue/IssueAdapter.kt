@@ -11,22 +11,33 @@ import com.mu.ruslotto.R
 import com.mu.ruslotto.database.Keg
 import com.mu.ruslotto.database.Ticket
 import com.mu.ruslotto.utils.COLS_COUNT
-import com.mu.ruslotto.utils.showCell
 import com.mu.ruslotto.utils.toLog
 
-class IssueAdapter : RecyclerView.Adapter<IssueAdapter.IssueHolder>() {
+class IssueAdapter(private val onCellClick: (Keg) -> Unit) : RecyclerView.Adapter<IssueAdapter.IssueHolder>() {
     private var tickets = emptyList<Ticket>()
     private var kegs = emptyList<Keg>()
 
-    class IssueHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class IssueHolder(view: View,
+                      private val onCellClick: (Keg) -> Unit) : RecyclerView.ViewHolder(view), View.OnClickListener {
         val ticket: TextView = view.findViewById(R.id.etItemTicketNumber)
         val card1: RecyclerView = view.findViewById(R.id.rvItemTicketCard1)
         val card2: RecyclerView = view.findViewById(R.id.rvItemTicketCard2)
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View) {
+            if (v.tag is Keg) {
+                val keg = v.tag as Keg
+                onCellClick(keg)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IssueHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_ticket, parent, false)
-        return IssueHolder(view)
+        return IssueHolder(view, onCellClick)
     }
 
     override fun getItemCount(): Int = tickets.size
@@ -45,9 +56,9 @@ class IssueAdapter : RecyclerView.Adapter<IssueAdapter.IssueHolder>() {
         ) { keg -> onCellClick(keg) }
     }
 
-    private fun onCellClick(keg: Keg) {
+    /*private fun onCellClick(keg: Keg) {
         showCell(keg)
-    }
+    }*/
 
     @SuppressLint("NotifyDataSetChanged")
     fun setTickets(tickets: List<Ticket>) {

@@ -1,5 +1,6 @@
 package com.mu.ruslotto.ui.issues.issue
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
@@ -19,12 +20,13 @@ import com.mu.ruslotto.utils.toRoom
 import java.time.LocalDate
 import java.util.*
 
-
 class IssueFragment : Fragment() {
     private lateinit var binding: FragmentIssueBinding
     private val viewModel: IssueViewModel by viewModels()
-    private val adapterIssue = IssueAdapter()
+    private val adapterIssue = IssueAdapter { issue -> onCellClick(issue) }
     private lateinit var tickets: List<Ticket>
+
+    private lateinit var dialog: AlertDialog
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -43,6 +45,13 @@ class IssueFragment : Fragment() {
         val tv = binding.root.findViewById<TextView>(resourceId)
         tv.text = "qwerty"*/
 
+        dialog = AlertDialog.Builder(requireContext())
+            .setCancelable(false)
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+
         val calendar = initDate(issue.date)
         initViewIssueDate(calendar)
         initDatePicker(calendar)
@@ -54,6 +63,20 @@ class IssueFragment : Fragment() {
         //observeIssueKegs(issue.id)
 
         return binding.root
+    }
+
+    private fun onCellClick(keg: Keg) {
+        /*val dialog = AlertDialog.Builder(APP_ACTIVITY)
+            .setCancelable(false)
+            .setTitle(keg.toString())
+            .setNegativeButton("Cancel") {dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()*/
+
+        dialog.setTitle(keg.toString())
+        dialog.show()
+        //showToast(keg.toString())
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
