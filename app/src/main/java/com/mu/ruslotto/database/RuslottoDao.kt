@@ -8,6 +8,26 @@ interface RuslottoDao {
     @Query("SELECT * FROM table_issues")
     fun getIssues(): Flow<List<Issue>>
 
+    @Query("SELECT * FROM table_tickets WHERE issue_id = :issueId")
+    fun getTickets(issueId: Int): Flow<List<Ticket>>
+
+    @Query("SELECT k.id, k.card, k.`row`, k.`column`, k.number, k.did_keg_win, k.ticket_id " +
+            "FROM table_issues i " +
+            "INNER JOIN table_tickets t ON t.issue_id = i.id " +
+            "INNER JOIN table_kegs k ON k.ticket_id = t.id " +
+            "WHERE i.id = :issueId " +
+            "ORDER BY t.id, k.card, k.`row`, k.`column`")
+    fun getIssueKegs(issueId: Int): Flow<List<Keg>>
+
+    @Insert
+    suspend fun insertKeg(keg: Keg): Long
+
+    @Update
+    suspend fun updateKeg(keg: Keg): Int
+
+    @Delete
+    suspend fun deleteKeg(keg: Keg): Int
+
     /*@Insert
     suspend fun addIssue(issue: Issue): Long
 
@@ -16,15 +36,4 @@ interface RuslottoDao {
 
     @Delete
     suspend fun delIssue(issue: Issue): Int*/
-
-    @Query("SELECT * FROM table_tickets WHERE issue_id = :issueId")
-    fun getTickets(issueId: Int): Flow<List<Ticket>>
-
-    @Query("SELECT k.id, k.card, k.row, k.column, k.number, k.did_keg_win, k.ticket_id " +
-            "FROM table_issues i " +
-            "INNER JOIN table_tickets t ON t.issue_id = i.id " +
-            "INNER JOIN table_kegs k ON k.ticket_id = t.id " +
-            "WHERE i.id = :issueId " +
-            "ORDER BY t.id, k.card, k.row, k.column")
-    fun getIssueKegs(issueId: Int): Flow<List<Keg>>
 }

@@ -27,7 +27,8 @@ import androidx.room.PrimaryKey
     ]
 )
 data class Keg(
-    @PrimaryKey(true) var id: Int,
+    @PrimaryKey(true)
+    var id: Int,
     var card: Int,
     var row: Int,
     var column: Int,

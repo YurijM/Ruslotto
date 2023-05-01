@@ -4,7 +4,11 @@
     <string name="splash_kegs">Spalsh бочонки</string>
 
     <string name="data_absent">Данные отсутствуют</string>
+    <string name="incorrect_number">\"%1$s\" - недопустимое значение для данной ячейки</string>
+
     <string name="add">Добавить</string>
+    <string name="input">Ввод</string>
+    <string name="cancel">Отмена</string>
 
     <string name="issue">Тираж</string>
     <string name="issues">Тиражи</string>
@@ -12,4 +16,6 @@
 
     <string name="ticket_add">Добавить билет</string>
     <string name="ticket_number">Номер билета</string>
+
+    <string name="input_number">Введите число</string>
 </resources>

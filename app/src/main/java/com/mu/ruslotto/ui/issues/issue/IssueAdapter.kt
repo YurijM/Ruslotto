@@ -11,7 +11,6 @@ import com.mu.ruslotto.R
 import com.mu.ruslotto.database.Keg
 import com.mu.ruslotto.database.Ticket
 import com.mu.ruslotto.utils.COLS_COUNT
-import com.mu.ruslotto.utils.toLog
 
 class IssueAdapter(private val onCellClick: (Keg) -> Unit) : RecyclerView.Adapter<IssueAdapter.IssueHolder>() {
     private var tickets = emptyList<Ticket>()
@@ -69,7 +68,6 @@ class IssueAdapter(private val onCellClick: (Keg) -> Unit) : RecyclerView.Adapte
     @SuppressLint("NotifyDataSetChanged")
     fun setKegs(kegs: List<Keg>) {
         this.kegs = kegs
-        toLog("'kegs: ${this.kegs}")
         notifyDataSetChanged()
     }
 }

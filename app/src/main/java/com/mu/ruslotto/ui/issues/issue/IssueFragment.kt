@@ -1,33 +1,49 @@
 package com.mu.ruslotto.ui.issues.issue
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.Html.FROM_HTML_MODE_LEGACY
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.mu.ruslotto.R
 import com.mu.ruslotto.database.Keg
 import com.mu.ruslotto.database.Ticket
 import com.mu.ruslotto.databinding.FragmentIssueBinding
+import com.mu.ruslotto.utils.APP_ACTIVITY
 import com.mu.ruslotto.utils.COLS_COUNT
 import com.mu.ruslotto.utils.ROWS_COUNT
 import com.mu.ruslotto.utils.dateToString
+import com.mu.ruslotto.utils.showToast
+import com.mu.ruslotto.utils.toLog
 import com.mu.ruslotto.utils.toRoom
 import java.time.LocalDate
 import java.util.*
+import kotlin.math.floor
+
 
 class IssueFragment : Fragment() {
     private lateinit var binding: FragmentIssueBinding
     private val viewModel: IssueViewModel by viewModels()
-    private val adapterIssue = IssueAdapter { issue -> onCellClick(issue) }
+    private val adapterIssue = IssueAdapter { keg -> onCellClick(keg) }
     private lateinit var tickets: List<Ticket>
+    private lateinit var issueKegs: MutableList<Keg>
 
     private lateinit var dialog: AlertDialog
+    //private lateinit var layoutItemKeyNumber: View
+    private lateinit var etKeyNumber: EditText
+    private lateinit var currentKeg: Keg
 
+    @SuppressLint("InflateParams")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,9 +61,35 @@ class IssueFragment : Fragment() {
         val tv = binding.root.findViewById<TextView>(resourceId)
         tv.text = "qwerty"*/
 
-        dialog = AlertDialog.Builder(requireContext())
+        val layoutItemKeyNumber = LayoutInflater.from(requireContext()).inflate(R.layout.item_keg_number, null)
+        etKeyNumber = layoutItemKeyNumber.findViewById(R.id.etItemKeyNumber)
+
+        //dialog = AlertDialog.Builder(requireContext())
+        dialog = AlertDialog.Builder(APP_ACTIVITY)
+            //.setTitle("Введите число")
+            .setTitle(Html.fromHtml("<font color='#0000FF'>Введите число</font>", FROM_HTML_MODE_LEGACY))
             .setCancelable(false)
-            .setNegativeButton("Cancel") { dialog, _ ->
+            .setView(layoutItemKeyNumber)
+            .setPositiveButton(R.string.input) { _, _ ->
+                val kegNumber = etKeyNumber.text.toString()
+                if (checkKeg(kegNumber, currentKeg)) {
+                    currentKeg.number = if (kegNumber.isBlank()) 0 else kegNumber.toInt()
+                    val cardKegsCount = issueKegs.filter { keg -> keg.number > 0 && keg.ticket_id == currentKeg.ticket_id && keg.card == currentKeg.card }.size
+
+                    if ((currentKeg.id == 0 && cardKegsCount <= 15)
+                        || (currentKeg.id > 0)) {
+                        viewModel.saveKeg(currentKeg)
+                    } else {
+                        currentKeg.id = 0
+                        currentKeg.number = 0
+                        showToast("Уже 15")
+                    }
+                } else {
+                    val error = APP_ACTIVITY.getString(R.string.incorrect_number, kegNumber)
+                    showToast(error)
+                }
+            }
+            .setNegativeButton(R.string.cancel) { dialog, _ ->
                 dialog.dismiss()
             }
             .create()
@@ -65,18 +107,32 @@ class IssueFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun onCellClick(keg: Keg) {
-        /*val dialog = AlertDialog.Builder(APP_ACTIVITY)
-            .setCancelable(false)
-            .setTitle(keg.toString())
-            .setNegativeButton("Cancel") {dialog, _ ->
-                dialog.dismiss()
-            }
-            .create()*/
+        toLog("keg: $keg")
 
-        dialog.setTitle(keg.toString())
+        currentKeg = keg
+        etKeyNumber.setText(if (keg.number == 0) "" else keg.number.toString())
+
+        //dialog.setMessage(keg.toString())
+        //dialog.setMessage(keg.toString())
+
         dialog.show()
+
+        dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(R.color.black)
+        dialog.getButton(DialogInterface.BUTTON_NEGATIVE).isAllCaps = false
+
+        //dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(R.color.white)
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(0xFF0000FF.toInt())
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).isAllCaps = false
+
         //showToast(keg.toString())
+    }
+
+    private fun checkKeg(number: String, keg: Keg): Boolean {
+        return number.isBlank()
+                || floor(number.toDouble() / 10).toInt() == keg.column
+                || (number.toInt() == 90 && keg.column == 8)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -133,7 +189,8 @@ class IssueFragment : Fragment() {
     }
 
     private fun observeIssueKegs(issueId: Int) = viewModel.getIssueKegs(issueId).observe(viewLifecycleOwner) { kegs ->
-        val issueKegs = mutableListOf<Keg>()
+        //val issueKegs = mutableListOf<Keg>()
+        issueKegs = mutableListOf()
 
         tickets.forEach { ticket ->
             (1..2).forEach { card ->
