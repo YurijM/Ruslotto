@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Ruslotto</string>
     <string name="draws_list">Список тиражей</string>
+    <string name="draw_number">Тираж №%1$s</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.mu.tote2024.presentation.components
+package com.mu.ruslotto.presentation.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
