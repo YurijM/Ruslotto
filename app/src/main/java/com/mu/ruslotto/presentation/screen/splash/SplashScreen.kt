@@ -19,10 +19,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.mu.ruslotto.R
+import com.mu.ruslotto.ui.theme.Color1
+import com.mu.ruslotto.ui.theme.Color2
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -75,8 +76,10 @@ fun SplashScreen(
                 .background(
                     Brush.verticalGradient(
                         colors = listOf(
-                            Color(0xFFEF9A9A),
-                            Color(0xFFFFEBEE)
+                            /*Color(0xFFEF9A9A),
+                            Color(0xFFFFEBEE)*/
+                            Color2,
+                            Color1
                         )
                     ),
                     shape = RoundedCornerShape(4.dp)

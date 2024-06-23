@@ -6,6 +6,6 @@ object Constants {
     object Routes {
         const val SPLASH_SCREEN = "splash_screen"
         const val MAIN_SCREEN = "main_screen"
-        const val FIRST_SCREEN = "first_screen"
+        const val DRAW_LIST_SCREEN = "draw_list_screen"
     }
 }
