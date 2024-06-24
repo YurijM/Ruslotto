@@ -1,5 +1,6 @@
 package com.mu.ruslotto.data.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
@@ -15,5 +16,7 @@ import androidx.room.PrimaryKey
 )
 data class DrawEntity(
     @PrimaryKey(true) var id: Int,
-    var date: String = ""
+    var date: String = "",
+    @ColumnInfo(name = "is_finished")
+    var isFinished: Boolean
 )

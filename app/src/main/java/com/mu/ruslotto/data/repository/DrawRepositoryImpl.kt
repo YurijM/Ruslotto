@@ -24,8 +24,8 @@ class DrawRepositoryImpl(
         dao.deleteKeg(ticketId)
     }
 
-    override suspend fun deleteDraw(draw: DrawEntity, ticketId1: Int, ticketId2: Int) {
-        dao.deleteDraw(draw, ticketId1, ticketId2)
+    override suspend fun deleteDraw(drawId: Int, ticketId1: Int, ticketId2: Int) {
+        dao.deleteDraw(drawId, ticketId1, ticketId2)
     }
 
     override fun listDraw(): Flow<List<DrawEntity>> {
