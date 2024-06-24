@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TicketDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun update(draw: TicketEntity)
+    suspend fun update(ticket: TicketEntity)
 
     @Query ("SELECT id, draw_id, ticket FROM table_tickets " +
             "WHERE draw_id = :drawId")

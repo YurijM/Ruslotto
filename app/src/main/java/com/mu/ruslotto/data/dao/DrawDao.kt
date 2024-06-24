@@ -18,17 +18,17 @@ interface DrawDao {
     suspend fun delete(draw: DrawEntity)
 
     @Transaction
-    fun deleteDraw(draw: DrawEntity, ticketId1: Int, ticketId2: Int) {
+    suspend fun deleteDraw(draw: DrawEntity, ticketId1: Int, ticketId2: Int) {
         deleteKeg(ticketId1)
         deleteKeg(ticketId2)
         deleteTicket(draw.id)
     }
 
     @Query("DELETE FROM table_tickets WHERE draw_id = :drawId")
-    fun deleteTicket(drawId: Int)
+    suspend fun deleteTicket(drawId: Int)
 
     @Query("DELETE FROM table_kegs WHERE ticket_id = :ticketId")
-    fun deleteKeg(ticketId: Int)
+    suspend fun deleteKeg(ticketId: Int)
 
     @Query("SELECT * FROM table_draws " +
             "ORDER BY date DESC")

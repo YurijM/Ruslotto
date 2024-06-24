@@ -21,5 +21,5 @@ interface KegDao {
             "INNER JOIN table_tickets t ON t.draw_id = d.id " +
             "INNER JOIN table_kegs k ON k.ticket_id = t.id " +
             "WHERE d.id = :drawId")
-    fun getKeg(drawId: Int): Flow<List<KegModel>>
+    fun listKeg(drawId: Int): Flow<List<KegModel>>
 }
