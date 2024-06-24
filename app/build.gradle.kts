@@ -51,6 +51,23 @@ android {
 }
 
 dependencies {
+    // Data Store
+    implementation(libs.androidx.datastore.preferences)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation (libs.androidx.runtime.livedata)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    annotationProcessor(libs.androidx.room.room.compiler)
+    ksp(libs.androidx.room.room.compiler)
+
+    // Dagger hilt
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
+    ksp(libs.dagger.compiler) // Dagger compiler
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.android.gradle.plugin)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -67,19 +84,4 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    // Room
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    implementation (libs.androidx.runtime.livedata)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    annotationProcessor(libs.androidx.room.room.compiler)
-    ksp(libs.androidx.room.room.compiler)
-
-    // Dagger hilt
-    implementation(libs.hilt.android)
-    implementation(libs.androidx.hilt.navigation.compose)
-    ksp(libs.dagger.compiler) // Dagger compiler
-    ksp(libs.hilt.compiler)
-    implementation(libs.hilt.android.gradle.plugin)
 }

@@ -19,7 +19,7 @@ import com.mu.ruslotto.R
 
 @Composable
 fun DrawItemScreen(
-    drawNumber: Int
+    date: String
 ) {
     Card(
         modifier = Modifier
@@ -37,7 +37,7 @@ fun DrawItemScreen(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = stringResource(R.string.draw_number, drawNumber),
+                text = stringResource(R.string.draw, date),
                 color = MaterialTheme.colorScheme.onSurface
             )
             Icon(

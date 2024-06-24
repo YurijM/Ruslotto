@@ -7,10 +7,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -26,7 +27,6 @@ import com.mu.ruslotto.ui.theme.Color1
 import com.mu.ruslotto.ui.theme.Color2
 import kotlinx.coroutines.delay
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SplashScreen(
     toMain: () -> Unit
@@ -34,24 +34,6 @@ fun SplashScreen(
     val scale = remember {
         Animatable(0f)
     }
-    /*val scaleText = remember {
-        Animatable(0f)
-    }*/
-
-    /*val developmentText = stringResource(R.string.design) + "\n"
-    val companyText = stringResource(R.string.company)
-    val text = buildAnnotatedString {
-        append("$developmentText ")
-        withStyle(
-            style = SpanStyle(
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Black
-            )
-        ) {
-            pushStringAnnotation(tag = companyText, annotation = companyText)
-            append(companyText)
-        }
-    }*/
 
     LaunchedEffect(key1 = true) {
         scale.animateTo(
@@ -72,12 +54,11 @@ fun SplashScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .background(
                     Brush.verticalGradient(
                         colors = listOf(
-                            /*Color(0xFFEF9A9A),
-                            Color(0xFFFFEBEE)*/
                             Color2,
                             Color1
                         )
@@ -88,32 +69,18 @@ fun SplashScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                modifier = Modifier.scale(scale.value).size(148.dp),
+                modifier = Modifier
+                    .scale(scale.value)
+                    .size(148.dp),
                 painter = painterResource(id = R.drawable.lotto_title),
                 contentDescription = "Logo"
             )
+            Spacer(modifier = Modifier.height(8.dp))
             Image(
                 modifier = Modifier.scale(scale.value),
                 painter = painterResource(id = R.drawable.lotto_kegs),
                 contentDescription = "Logo"
             )
-            /*AssistChip(
-                modifier = Modifier
-                    .padding(top = 8.dp)
-                    .scale(scaleText.value),
-                onClick = { *//*TODO*//* },
-                label = {
-                    Text(
-                        text = text,
-                    )
-                },
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Settings,
-                        contentDescription = "settings"
-                    )
-                }
-            )*/
         }
     }
 }
