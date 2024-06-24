@@ -1,4 +1,4 @@
-package com.mu.ruslotto.presentation.screen.draw
+package com.mu.ruslotto.presentation.screen.draw.item
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.mu.ruslotto.R
+import com.mu.ruslotto.presentation.utils.toLog
 
 @Composable
 fun DrawItemScreen(
@@ -33,7 +34,7 @@ fun DrawItemScreen(
                     vertical = 4.dp,
                     horizontal = 20.dp
                 )
-                .clickable {},
+                .clickable { toLog(("update")) },
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
@@ -41,7 +42,8 @@ fun DrawItemScreen(
                 color = MaterialTheme.colorScheme.onSurface
             )
             Icon(
-                painter = painterResource(id = R.drawable.ic_double_arrow),
+                modifier = Modifier.clickable { toLog(("delete")) },
+                painter = painterResource(id = R.drawable.ic_delete),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurface
             )
